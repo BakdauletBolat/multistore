@@ -1,0 +1,38 @@
+:root {
+    --secondary: #0d6efd!important;
+    --primary: #0d6efd!important;
+    --header-bg: var(--secondary)!important;
+    --breadcrumbs-bg: var(--primary);
+}
+
+
+#header {
+    background-color: white!important;
+    color:black!important;
+}
+#header a:link, #header a:visited, #logout-form button{
+    color:black!important;
+}
+
+.module {
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.dashboard .module table th{
+    padding: 20px 10px;
+}
+
+#nav-sidebar{
+    border:none!important;
+    padding: 0px 10px;
+}
+
+.toggle-nav-sidebar{
+    border:none!important;
+}
+
+#nav-sidebar .module th, #nav-sidebar .module caption{
+    border:none;
+    padding:15px 10px;
+}

@@ -1,0 +1,10 @@
+{% extends "admin/base.html" %}
+{% load static %}
+{% block title %}{% if subtitle %}{{ subtitle }} | {% endif %}{{ title }} | {{ site_title|default:_('Django site admin') }}{% endblock %}
+
+{% block branding %}
+<img src="{% static 'admin/logo.svg' %}" alt=""  height="30">
+{% endblock %}
+
+
+{% block nav-global %}{% endblock %}
