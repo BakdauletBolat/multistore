@@ -26,7 +26,12 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'portodjangostarter',
-    'users'
+    'users',
+    'handbook',
+    'order',
+    'product',
+    'stock',
+    'store'
 ]
 
 MIDDLEWARE = [
