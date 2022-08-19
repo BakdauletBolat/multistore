@@ -8,4 +8,5 @@ class Order(models.Model):
     is_paid = models.BooleanField(default=False,verbose_name='Оплачен ?')
     paid_date = models.DateTimeField(null=True,blank=True)
     created_date = models.DateTimeField(auto_now_add=True)
+    store = models.ForeignKey('store.Store', on_delete=models.CASCADE)
     updated_date = models.DateTimeField(auto_now=True)

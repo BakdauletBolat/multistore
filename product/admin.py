@@ -1,4 +1,9 @@
 from product.models.Product import Product
 from django.contrib import admin
 
-admin.site.register(Product)
+
+class ProductAdmin(admin.ModelAdmin):
+
+    list_filter = ('store',)
+
+admin.site.register(Product,ProductAdmin)

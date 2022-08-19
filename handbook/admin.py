@@ -6,7 +6,13 @@ from handbook.models.WireHouse import WireHouse
 from django.contrib import admin
 
 
-admin.site.register(Category)
+
+class CategoryAdmin(admin.ModelAdmin):
+
+    list_filter = ('store',)
+    list_display = ('id','name')
+
+admin.site.register(Category,CategoryAdmin)
 admin.site.register(City)
 admin.site.register(Quality)
 admin.site.register(WireHouse)
