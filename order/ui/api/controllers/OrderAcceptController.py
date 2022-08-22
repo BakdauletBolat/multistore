@@ -28,7 +28,7 @@ class OrderAcceptController(APIView):
     def post(self,request):
             remote_addr = self.get_client_ip(request)
             print(remote_addr)
-            if remote_addr is not None and remote_addr == '172.25.0.4':
+            if remote_addr is not None and remote_addr == '10.10.1.1':
                 try:
                     with transaction.atomic():
                         orderAcceptData = OrderAcceptTransformer(data=request.data)
