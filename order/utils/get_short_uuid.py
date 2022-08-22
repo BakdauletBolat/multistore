@@ -1,4 +1,5 @@
 import uuid
+from random import randint
 
 def get_short_uuid():
-        return str(uuid.uuid4())[:10]
+        return randint(1000000000, 9999999999) 

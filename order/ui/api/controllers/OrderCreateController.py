@@ -2,6 +2,8 @@ from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework.exceptions import ValidationError
+from order.tasks.OrderUserCreateTask import OrderUserCreateTask
+from order.ui.api.transformers.OrderTransformer import OrderTransformer
 from users.models.User import User
 from order.dto.OrderCreateDto import OrderCreateDto
 from order.dto.OrderItemCreateDto import OrderItemCreateDto
@@ -19,16 +21,9 @@ class OrderCreateController(APIView):
                     orderData = OrderCreateTransformer(data=request.data)
                     orderData.is_valid(raise_exception=True)
 
-                    user = orderData.validated_data.pop('user',None)
+                    userData = orderData.validated_data.pop('user',None)
 
-                    user = User.objects.create(
-                        email=user['email'],
-                        last_name=user['last_name'],
-                        first_name=user['first_name'],
-                        phone=user['phone'],
-                    )
-
-                    user.set_password('Zz123456')
+                    user = OrderUserCreateTask(userData=userData).run()
 
                     order_items = orderData.validated_data.pop('order_items',None)
                     
@@ -38,13 +33,12 @@ class OrderCreateController(APIView):
                                                                   store_id=1)).run()
 
                     for orderItem in order_items:
-                        print(orderItem['product_id'])
                         OrderItemCreateTask(dto=OrderItemCreateDto(
                             **orderItem,
                             order_id=order.id
                         )).run()
                     
-                    return Response(data={'status':'ok'},status=status.HTTP_200_OK)
+                    return Response(data=OrderTransformer(order).data,status=status.HTTP_200_OK)
             except ValidationError as e:
                 return Response(data=e.get_full_details(),status=e.status_code)
             
