@@ -16,8 +16,17 @@ from order.ui.api.transformers.OrderCreateTransformer import OrderCreateTransfor
 from django.db.utils import IntegrityError
 
 class OrderAcceptController(APIView):
+
+    def get_client_ip(self,request):
+        x_forwarded_for = request.META.get('HTTP_X_FORWARDED_FOR')
+        if x_forwarded_for:
+            ip = x_forwarded_for.split(',')[-1].strip()
+        else:
+            ip = request.META.get('REMOTE_ADDR')
+        return ip
+
     def post(self,request):
-            remote_addr = self.request.META.get('REMOTE_ADDR',None)
+            remote_addr = self.get_client_ip(request)
             print(remote_addr)
             if remote_addr is not None and remote_addr == '172.25.0.4':
                 try:
