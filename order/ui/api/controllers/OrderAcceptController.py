@@ -18,6 +18,7 @@ from django.db.utils import IntegrityError
 class OrderAcceptController(APIView):
     def post(self,request):
             remote_addr = self.request.META.get('REMOTE_ADDR',None)
+            print(remote_addr)
             if remote_addr is not None and remote_addr == '193.93.56.115':
                 try:
                     with transaction.atomic():
