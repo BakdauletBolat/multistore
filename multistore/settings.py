@@ -19,6 +19,7 @@ ALLOWED_HOSTS = ['*']
 # Application definition
 
 INSTALLED_APPS = [
+         'grappelli',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -27,11 +28,16 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'portodjangostarter',
     'users',
+
+
     'handbook',
     'order',
     'product',
     'stock',
-    'store'
+    'store',
+     'eav',
+     'beav',
+    
 ]
 
 MIDDLEWARE = [
@@ -137,3 +143,5 @@ REST_FRAMEWORK = {
     )
 }
 
+DATA_UPLOAD_MAX_MEMORY_SIZE = 100000000
+DATA_UPLOAD_MAX_NUMBER_FIELDS = 10000000

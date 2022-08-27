@@ -15,6 +15,7 @@ class Command(BaseCommand):
                     prObj = Product(
                         id=int(product['id']),
                         category_id=int(product['attributes']['category_id']),
+                        full_name=product['attributes']['full_name'],
                         name=str(product['attributes']['name'])
                         )
                     products.append(prObj)

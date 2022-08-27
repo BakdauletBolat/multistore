@@ -5,8 +5,11 @@ from users.ui.api.routes.index import urlpatterns
 from product.ui.api.routes.index import urlpatterns_product
 from order.ui.api.routes.index import urlpatterns_order
 from handbook.ui.api.routes.index import urlpatterns_handbook
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
+    path('grappelli/', include('grappelli.urls')),
     path('api/v1/', include([
         path('', include(urlpatterns)),
         path('', include(urlpatterns_product)),
@@ -15,3 +18,5 @@ urlpatterns = [
     ])),
     path('admin/', admin.site.urls),
 ]
+
+urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

@@ -1,0 +1,13 @@
+{
+	"folders": [
+		{
+			"path": "../../../../.."
+		},
+		{
+			"path": "../../../../../../halyq"
+		}
+	],
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "halyq"
+	}
+}
