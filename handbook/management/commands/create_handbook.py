@@ -3,12 +3,16 @@ from handbook.models.WireHouse import WireHouse
 from handbook.models.City import City
 from handbook.models.Quality import Quality
 from multistore.request import Request
+from random import randint
 class Command(BaseCommand):
     help = 'WireHouse create'
 
     request = Request()
     def handle(self, *args, **options):
 
+        # for wiregoute in WireHouse.objects.all():
+        #     wiregoute.city_id = randint(1,20)
+        #     wiregoute.save()
 
         wirehouseList = self.request.get('/api/v1/handbook/warehouses')
         cityList = self.request.get('/api/v1/handbook/cities')
@@ -25,6 +29,7 @@ class Command(BaseCommand):
                 WireHouse(
                     id=item['id'],
                     name=item['attributes']['name'],
+                    city_id=item['attributes']['city_id']
                 )
             )
         

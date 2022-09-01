@@ -8,7 +8,7 @@ from users.models.User import User
 from order.dto.OrderCreateDto import OrderCreateDto
 from order.dto.OrderItemCreateDto import OrderItemCreateDto
 from order.models.Order import Order
-from order.tasks.OrderCreateTask import OrderCreateTask
+from order.actions.OrderCreateTask import OrderCreateTask
 from order.tasks.OrderItemCreateTask import OrderItemCreateTask
 from django.db import transaction
 from order.ui.api.transformers.OrderCreateTransformer import OrderCreateTransformer
@@ -49,6 +49,4 @@ class OrderCreateController(APIView):
                 },status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
             except Exception as e:
-                print(type(e))
-
                 return Response(data=str(e),status=status.HTTP_500_INTERNAL_SERVER_ERROR)

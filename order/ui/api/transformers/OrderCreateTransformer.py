@@ -18,6 +18,7 @@ class OrderItemTransformer(serializers.Serializer):
 class OrderCreateTransformer(serializers.Serializer):
     
     user = OrderUserTransformer()
+    operation_id = serializers.IntegerField(required=False)
     order_items = OrderItemTransformer(many=True)
     payment_method_id = serializers.IntegerField()
     delivery_method_id = serializers.IntegerField()

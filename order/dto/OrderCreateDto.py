@@ -8,6 +8,7 @@ class OrderCreateDto:
     payment_method_id:int
     delivery_method_id:int
     comment:str = None
+    operation_id: int = None
     shipping_address:str = None
     billing_address:str = None
     store_id:int = None

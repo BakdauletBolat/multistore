@@ -9,4 +9,4 @@ class City(models.Model):
 
 
     def __str__(self):
-        return self.name
+        return f"{self.id} {self.name}"

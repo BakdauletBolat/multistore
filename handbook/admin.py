@@ -15,4 +15,11 @@ class CategoryAdmin(admin.ModelAdmin):
 admin.site.register(Category,CategoryAdmin)
 admin.site.register(City)
 admin.site.register(Quality)
-admin.site.register(WireHouse)
+
+
+
+class WireHouseAdmin(admin.ModelAdmin):
+    list_display = ('id','name','city')
+    list_editable = ('city',)
+
+admin.site.register(WireHouse,WireHouseAdmin)

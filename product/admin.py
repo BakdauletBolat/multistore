@@ -15,6 +15,7 @@ class ProductAdmin(admin.ModelAdmin):
     inlines = [EntityTabularInline]
     list_filter = ('store','category')
     list_display = ('id','name','full_name')
+    list_display_links = ('name',)
     search_fields = ('name','full_name')
 
     

@@ -3,9 +3,11 @@ from django.contrib import admin
 
 
 
-class StockAdmin(admin.ModelAdmin):
 
-    list_filter = ('store',)
+
+class StockAdmin(admin.ModelAdmin):
+    raw_id_fields = ('product',)
+    list_filter = ('store','wirehouse',)
 
 
 admin.site.register(Stock,StockAdmin)
