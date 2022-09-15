@@ -53,9 +53,13 @@ class User(AbstractUser):
 
     class Meta:
         app_label = 'users'
+        verbose_name = 'Пользователь'
+        verbose_name_plural = 'Пользователи'
 
     def get_full_name(self):
         return self.email
 
     def get_short_name(self):
         return self.email
+
+        

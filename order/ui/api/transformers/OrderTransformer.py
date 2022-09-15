@@ -1,4 +1,5 @@
 from rest_framework import serializers
+from order.ui.api.transformers.OrderCreateTransformer import AddressTransformer
 from store.models.Store import Store
 from order.models.Order import Order
 from order.models.PaymentMethod import PaymentMethod
@@ -42,6 +43,8 @@ class OrderTransformer(serializers.ModelSerializer):
     payment_method = PaymentMethodTransformer(read_only=True)
     delivery_method = DeliveryMethodTransformer(read_only=True)
     store = StoreTransformer(read_only=True)
+    shipping_address = AddressTransformer(read_only=True)
+    billing_address = AddressTransformer(read_only=True)
     order_items = OrderItemTransformer(read_only=True,many=True)
 
     class Meta:

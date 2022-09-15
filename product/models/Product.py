@@ -16,3 +16,7 @@ class Product(models.Model):
     def autocomplete_search_fields():
         return ("id__iexact", "name__icontains",)
         
+    class Meta:
+        verbose_name = 'Продукт'
+        verbose_name_plural = 'Продукты'
+        

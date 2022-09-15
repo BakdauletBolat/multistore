@@ -28,14 +28,13 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'portodjangostarter',
     'users',
-    'easy_select2',
     'handbook',
     'order',
     'product',
     'stock',
     'store',
-     'eav',
      'beav',
+     'busket'
     
 ]
 

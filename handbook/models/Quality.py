@@ -8,5 +8,9 @@ class Quality(models.Model):
     updated_date = models.DateTimeField(auto_now=True)
 
 
-    def __str__(self):
+    def __str__(self)->str:
         return self.name
+
+    class Meta:
+        verbose_name = 'Качество'
+        verbose_name_plural = 'Качествы'

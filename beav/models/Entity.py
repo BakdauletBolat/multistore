@@ -12,6 +12,13 @@ class Entity(models.Model):
     product = models.ForeignKey(Product,related_name='entities',on_delete=models.CASCADE)
 
 
+    def __str__(self) -> str:
+        return f"{self.attribute}: in group: {self.group} - {self.values.values_list('name',flat=True)}"
+
+    class Meta:
+        verbose_name = 'Сущность'
+        verbose_name_plural = 'Сущности'
+
 
 
 

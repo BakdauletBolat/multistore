@@ -1,5 +1,6 @@
 
 from dataclasses import dataclass
+from typing import Optional
 
 @dataclass
 class OrderCreateDto:
@@ -7,8 +8,8 @@ class OrderCreateDto:
     status_id:int
     payment_method_id:int
     delivery_method_id:int
-    comment:str = None
-    operation_id: int = None
-    shipping_address:str = None
-    billing_address:str = None
-    store_id:int = None
+    comment:Optional[str] = None
+    operation_id: Optional[int] = None
+    shipping_address:Optional[str] = None
+    billing_address:Optional[str] = None
+    store_id:Optional[str] = None

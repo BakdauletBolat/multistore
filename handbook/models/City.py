@@ -8,5 +8,9 @@ class City(models.Model):
     updated_date = models.DateTimeField(auto_now=True)
 
 
-    def __str__(self):
-        return f"{self.id} {self.name}"
+    def __str__(self) -> str:
+        return f"{self.id} {self.name}"  # type: ignore
+
+    class Meta:
+        verbose_name = 'Город'
+        verbose_name_plural = 'Города'

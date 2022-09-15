@@ -6,8 +6,10 @@ from product.ui.api.routes.index import urlpatterns_product
 from order.ui.api.routes.index import urlpatterns_order
 from handbook.ui.api.routes.index import urlpatterns_handbook
 from stock.ui.api.routes.index import urlpatterns_stock
+from busket.ui.api.routes.index import busket_urlpatterns
 from django.conf import settings
 from django.conf.urls.static import static
+
 
 urlpatterns = [
     path('grappelli/', include('grappelli.urls')),
@@ -16,7 +18,8 @@ urlpatterns = [
         path('', include(urlpatterns_product)),
         path('', include(urlpatterns_order)),
         path('', include(urlpatterns_handbook)),
-        path('', include(urlpatterns_stock))
+        path('', include(urlpatterns_stock)),
+        path('',include(busket_urlpatterns))
     ])),
     path('admin/', admin.site.urls),
 ]

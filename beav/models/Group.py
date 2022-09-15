@@ -8,3 +8,7 @@ class Group(models.Model):
 
     def __str__(self) -> str:
         return self.name
+
+    class Meta:
+        verbose_name = 'Группа'
+        verbose_name_plural = 'Группы'

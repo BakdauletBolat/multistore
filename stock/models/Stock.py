@@ -11,3 +11,8 @@ class Stock(models.Model):
     quantity = models.IntegerField(default=1)
     created_date = models.DateTimeField(auto_now_add=True)
     updated_date = models.DateTimeField(auto_now=True)
+
+    class Meta:
+
+        verbose_name = 'Остаток'
+        verbose_name_plural = 'Остатьки'

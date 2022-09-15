@@ -11,3 +11,7 @@ class OrderResponse(models.Model):
     created_date = models.DateTimeField(auto_now_add=True)
     updated_date = models.DateTimeField(auto_now=True)
     
+
+    class Meta:
+        verbose_name = 'Ответ заказа'
+        verbose_name_plural = 'Ответы заказа'

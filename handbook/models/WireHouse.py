@@ -9,5 +9,10 @@ class WireHouse(models.Model):
     updated_date = models.DateTimeField(auto_now=True)
 
 
-    def __str__(self):
+    def __str__(self)->str:
         return self.name
+    
+
+    class Meta:
+        verbose_name = 'Склад'
+        verbose_name_plural = 'Склады'
