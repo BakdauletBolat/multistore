@@ -2,7 +2,7 @@ from handbook.models.Category import Category
 from handbook.models.City import City
 
 from handbook.models.Quality import Quality
-from handbook.models.WireHouse import WireHouse
+from handbook.models.WareHouse import WareHouse
 from django.contrib import admin
 
 
@@ -18,8 +18,8 @@ admin.site.register(Quality)
 
 
 
-class WireHouseAdmin(admin.ModelAdmin):
+class WareHouseAdmin(admin.ModelAdmin):
     list_display = ('id','name','city')
     list_editable = ('city',)
 
-admin.site.register(WireHouse,WireHouseAdmin)
+admin.site.register(WareHouse,WareHouseAdmin)

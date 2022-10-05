@@ -26,6 +26,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'corsheaders',
     'portodjangostarter',
     'users',
     'handbook',
@@ -33,12 +34,14 @@ INSTALLED_APPS = [
     'product',
     'stock',
     'store',
-     'beav',
-     'busket'
-    
+    'beav',
+    'busket',
+    'photo'
+
 ]
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -142,7 +145,10 @@ REST_FRAMEWORK = {
 }
 
 
-CSRF_TRUSTED_ORIGINS = ['http://127.0.0.1:4444','http://10.10.1.70:4444']
+CSRF_TRUSTED_ORIGINS = ['http://127.0.0.1:4444', 'http://10.10.1.70:4444']
 
 DATA_UPLOAD_MAX_MEMORY_SIZE = 100000000
 DATA_UPLOAD_MAX_NUMBER_FIELDS = 10000000
+
+
+CORS_ALLOW_ALL_ORIGINS = True

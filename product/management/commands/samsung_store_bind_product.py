@@ -1,6 +1,7 @@
+from loguru import logger
 from store.models.Store import Store
 from django.core.management.base import BaseCommand, CommandError
-from product.models.Product import Product
+from product.models.Product import Product, ProductBase
 from handbook.models.Category import Category
 from multistore.request import Request
 class Command(BaseCommand):
@@ -8,18 +9,18 @@ class Command(BaseCommand):
 
     request = Request()
     def handle(self, *args, **options):
+        samsung_id = 4
+        samsung_products = ProductBase.objects.filter(brand_id=3)
+        
 
-        try:
-            store = Store.objects.get(id=1)
-        except Exception:
-            store = Store.objects.create(name='Samsung')
+        for samsung_product in samsung_products:
+            try:
+                product = Product.objects.get(base_id=samsung_product.id)
+                product.stores.add(samsung_id)
+            except Exception as e:
+                product = Product.objects.create(base=samsung_product)
+                product.stores.add(samsung_id)
 
-        ids = list(Category.objects.filter(name='Samsung').values_list('id', flat=True))
-     
-        products_where_category_samsung = Product.objects.filter(category_id__in=ids)
+    
 
-        for item in products_where_category_samsung:
-            item.store_id = store.id
-            item.save()
-
-        self.stdout.write(self.style.SUCCESS('Successfully binded Samsung Store products'))
+        logger.success('Successfully binded Samsung Store products')

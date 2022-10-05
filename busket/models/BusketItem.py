@@ -3,7 +3,7 @@ from django.db import models
 
 class BusketItem(models.Model):
 
-    product = models.ForeignKey('product.Product',on_delete=models.CASCADE)
+    product = models.ForeignKey('product.ProductBase',on_delete=models.CASCADE)
     quantity = models.IntegerField(default=1)
     busket = models.ForeignKey('busket.Busket',on_delete=models.CASCADE,related_name='items')
     price = models.IntegerField(default=10)

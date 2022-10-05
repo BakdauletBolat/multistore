@@ -7,7 +7,7 @@ from django.contrib import admin
 
 class StockAdmin(admin.ModelAdmin):
     raw_id_fields = ('product',)
-    list_filter = ('store','wirehouse',)
+    list_filter = ('warehouse',)
 
 
 admin.site.register(Stock,StockAdmin)

@@ -3,14 +3,14 @@ from handbook.tasks.GetCategory import GetCategory
 from handbook.tasks.GetRecurciveCategoryIdsByParent import GetRecurciveCategoryIdsByParent 
 from product.models.Product import Product
 from product.tasks.GetProductsByCategoryIds import GetProductsByCategoryIds
-from product.ui.api.transformers.ProductTransformer import ProductTransformer
+from product.ui.api.transformers.ProductBaseTransformer import ProductBaseTransformer
 from multistore.config.pagination import StandartResultsSetPagination
 from rest_framework.exceptions import ValidationError
 
 
 class ProductsByCategoryIdController(ListAPIView):
 
-    serializer_class = ProductTransformer
+    serializer_class = ProductBaseTransformer
     queryset = Product.objects.all()
     pagination_class = StandartResultsSetPagination
 

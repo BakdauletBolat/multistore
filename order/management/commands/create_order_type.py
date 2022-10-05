@@ -5,7 +5,7 @@ from order.models.DeliveryMethod import DeliveryMethod
 
 from multistore.request import Request
 class Command(BaseCommand):
-    help = 'WireHouse create'
+    help = 'WareHouse create'
 
     request = Request()
     def handle(self, *args, **options):

@@ -21,9 +21,9 @@ class StockGetController(APIView):
     
             data = StockFilterTransformer(data=request.GET)
             data.is_valid(raise_exception=True)
-            wirehouses_ids = City.objects.get(id=data.validated_data['city_id']).warehouses.values_list('id',flat=True)
-            print(wirehouses_ids)
-            stocks = Stock.objects.filter(wirehouse_id__in=wirehouses_ids,product_id=data.validated_data['product_id'])
+            WareHouses_ids = City.objects.get(id=data.validated_data['city_id']).warehouses.values_list('id',flat=True)
+            print(WareHouses_ids)
+            stocks = Stock.objects.filter(WareHouse_id__in=WareHouses_ids,product_id=data.validated_data['product_id'])
         
               
             return Response(data=StockTransformer(stocks,many=True).data,status=status.HTTP_200_OK)
