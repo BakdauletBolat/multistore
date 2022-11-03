@@ -1,12 +1,12 @@
-from django.core.management.base import BaseCommand, CommandError
-from handbook.actions.commands import CreateBrandsAction, CreateCategoriesAction, CreateCitiesAction, CreateDeparmentsAction, CreateQualitiesAction, CreateStoresAction, CreateWareHouseAction
+from django.core.management.base import BaseCommand
+from handbook.actions.commands import CreateBrandsAction, CreateCategoriesAction, CreateCitiesAction, \
+    CreateDeparmentsAction, CreateQualitiesAction, CreateStoresAction, CreateWareHouseAction
 
-from multistore.request import Request
+
 class Command(BaseCommand):
-    help = 'CreateSeed'
-    request = Request()
+    help = 'Создание данных'
+
     def handle(self, *args, **options):
-        
         CreateStoresAction().run()
         CreateCategoriesAction().run()
         CreateBrandsAction().run()
@@ -14,4 +14,3 @@ class Command(BaseCommand):
         CreateDeparmentsAction().run()
         CreateQualitiesAction().run()
         CreateWareHouseAction().run()
-        

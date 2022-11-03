@@ -1,5 +1,5 @@
-from store.models.Store import Store
+from store.models import Store
 
-from django.contrib import admin 
+from django.contrib import admin
 
 admin.site.register(Store)

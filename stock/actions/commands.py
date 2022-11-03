@@ -1,31 +1,32 @@
 from loguru import logger
-from multistore.request import Request
-from stock.models.Stock import Stock
+from multistore.request import ImsServiceRequest
+from stock.models import Stock
 
+request = ImsServiceRequest()
 
-request = Request()
 
 class CreateStocksAction:
-    def run(self):
+
+    @staticmethod
+    def run():
         stocks = []
-        for page in range(1,3): 
+        for page in range(1, 3):
             response = request.get_stocks(page)
-            try: 
-               
+            try:
+
                 for stock in response['data']:
-                    stObj = Stock(
+                    stock_obj = Stock(
                         quality_id=stock['quality_id'],
                         warehouse_id=stock['warehouse_id'],
                         product_id=stock['product_id'],
                         quantity=stock['quantity']
-                        )
-                    stocks.append(stObj)
-                print('Added Page =',page)
+                    )
+                    stocks.append(stock_obj)
+                logger.success(f'added {page} - page')
             except Exception as e:
-                print(e)
-                print('Exeption on page =',page)
-        
-        lengthStocks = len(stocks)
-        
+                logger.exception(e)
+
+        length_stocks = len(stocks)
+
         Stock.objects.bulk_create(stocks)
-        logger.success(f'Successfully created {lengthStocks} stocks')
+        logger.success(f'Успешно импортировано {length_stocks} складов')

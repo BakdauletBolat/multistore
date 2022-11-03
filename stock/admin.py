@@ -1,8 +1,5 @@
-from stock.models.Stock import Stock
+from stock.models import Stock
 from django.contrib import admin
-
-
-
 
 
 class StockAdmin(admin.ModelAdmin):
@@ -10,4 +7,4 @@ class StockAdmin(admin.ModelAdmin):
     list_filter = ('warehouse',)
 
 
-admin.site.register(Stock,StockAdmin)
+admin.site.register(Stock, StockAdmin)

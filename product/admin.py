@@ -1,24 +1,27 @@
-from beav.models.Entity import Entity
-from product.models.Product import Product, ProductBase
+from beav.models import Entity
+from product.models import Product, ProductBase, ProductImage, Price
 from django.contrib import admin
 
 
-
 class EntityTabularInline(admin.TabularInline):
-
     model = Entity
-
+    raw_id_fields = ['category']
 
 
 class ProductBaseAdmin(admin.ModelAdmin):
-
     list_filter = ('category',)
-    list_display = ('id','name','full_name')
+    list_display = ('id', 'name', 'full_name')
     list_display_links = ('name',)
-    search_fields = ('name','full_name')
-
-    
+    search_fields = ('name', 'full_name')
 
 
-admin.site.register(ProductBase,ProductBaseAdmin)
-admin.site.register(Product)
+
+class ProductAdmin(admin.ModelAdmin):
+    inlines = [EntityTabularInline]
+    raw_id_fields = ['base']
+
+
+admin.site.register(ProductBase, ProductBaseAdmin)
+admin.site.register(Product, ProductAdmin)
+admin.site.register(ProductImage)
+admin.site.register(Price)

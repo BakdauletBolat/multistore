@@ -3,7 +3,7 @@ from stock.actions.commands import CreateStocksAction
 
 
 class Command(BaseCommand):
-    help = 'Creating Products from IMS'
+    help = 'Импорт складов IMS'
 
-    def handle(self, *args, **options):   
+    def handle(self, *args, **options):
         CreateStocksAction().run()

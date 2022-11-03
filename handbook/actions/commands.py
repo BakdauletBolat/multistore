@@ -1,22 +1,17 @@
-from handbook.models.Category import Category
-from handbook.models.City import City
-from handbook.models.Department import Department
-from handbook.models.WareHouse import WareHouse
-from handbook.models.Quality import Quality
-from handbook.models.Brand import Brand
-from multistore.request import Request
-from store.models.Store import Store
-
+from multistore.request import ImsServiceRequest
+from handbook.models import Category, City, Department, WareHouse, Quality, Brand
+from store.models import Store
 from loguru import logger
-request = Request()
+request = ImsServiceRequest()
 
 
 class CreateWareHouseAction:
 
-    def run(self):
-        list = request.get_warehouses()
+    @staticmethod
+    def run():
+        items = request.get_warehouses()
         list_create = []
-        for item in list['data']:
+        for item in items['data']:
             list_create.append(
                 WareHouse(
                     id=item['id'],
@@ -28,40 +23,44 @@ class CreateWareHouseAction:
                     city_id=item['attributes']['city_id']
                 )
             )
-        try:
-            WareHouse.objects.bulk_create(list_create)
-            logger.success('1. Successfully imported WareHouses')
-        except Exception as e:
-            WareHouse.objects.bulk_update(list_create, fields=['name'])
-            logger.success('1. Successfully updated WareHouses')
+
+        WareHouse.objects.bulk_create(list_create,
+                                      update_conflicts=True,
+                                      unique_fields=['id'],
+                                      update_fields=['name', 'uid', 'code', 'status', 'store_id', 'city_id'])
+        logger.success(f'Успешно импортировано {len(list_create)} складов')
 
 
 class CreateCitiesAction:
 
-    def run(self):
-        list = request.get_cities()
+    @staticmethod
+    def run():
+        items = request.get_cities()
         list_create = []
-        for item in list['data']:
+        for item in items['data']:
             list_create.append(
                 City(
                     id=item['id'],
+                    uid=item['attributes']['uid'],
                     name=item['attributes']['name'],
                 )
             )
-        try:
-            City.objects.bulk_create(list_create)
-            logger.success('2. Successfully imported cities')
-        except Exception as e:
-            City.objects.bulk_update(list_create, fields=['name'])
-            logger.success('2. Successfully updated cities')
+
+        City.objects.bulk_create(list_create,
+                                 update_conflicts=True,
+                                 unique_fields=['id'],
+                                 update_fields=['name', 'uid'])
+
+        logger.success(f'Успешно импортировано {len(list_create)} городов')
 
 
 class CreateQualitiesAction:
 
-    def run(self):
-        list = request.get_qualities()
+    @staticmethod
+    def run():
+        items = request.get_qualities()
         list_create = []
-        for item in list:
+        for item in items:
             list_create.append(
                 Quality(
                     id=item['id'],
@@ -74,118 +73,111 @@ class CreateQualitiesAction:
                 )
             )
 
-        try:
-            Quality.objects.bulk_create(list_create)
-            logger.success('3. Successfully imported qualities')
-        except Exception as e:
-            Quality.objects.bulk_update(list_create, fields=['name'])
-            logger.success('3. Successfully updated qualities')
+        Quality.objects.bulk_create(list_create,
+                                    update_conflicts=True,
+                                    unique_fields=['id'],
+                                    update_fields=['name', 'uid', 'code', 'status', 'alias', 'order'])
+
+        logger.success(f'Успешно импортировано {len(list_create)} качествы')
 
 
 class CreateCategoriesAction:
 
-    def run(self):
-        list = request.get_categories()
-
+    @staticmethod
+    def run():
+        items = request.get_categories()
         list_create = []
-
-        for item in list:
-
-            try:
-                Category.objects.get(id=item['id'])
-            except Exception as e:
-                list_create.append(
-                    Category(
-                        id=item['id'],
-                        name=item['attributes']['name'],
-                        uid=item['attributes']['uid'],
-                        code=item['attributes']['code'],
-                        status=item['attributes']['status'],
-                        parent_id=item['attributes']['parent_id']
-                    )
+        for item in items:
+            list_create.append(
+                Category(
+                    id=item['id'],
+                    name=item['attributes']['name'],
+                    uid=item['attributes']['uid'],
+                    code=item['attributes']['code'],
+                    status=item['attributes']['status'],
+                    parent_id=item['attributes']['parent_id']
                 )
+            )
 
-        Category.objects.bulk_create(list_create)
+        Category.objects.bulk_create(list_create,
+                                     update_conflicts=True,
+                                     unique_fields=['id'],
+                                     update_fields=['name', 'uid', 'code', 'status', 'parent_id'])
 
-        logger.success('Successfully imported categories')
-
+        logger.success(f'Успешно импортировано {len(list_create)} категорий')
 
 
 class CreateDeparmentsAction:
 
-    def run(self):
-        list = request.get_deparment()
-
+    @staticmethod
+    def run():
+        items = request.get_deparment()
         list_create = []
 
-        for item in list:
-
-            try:
-                Department.objects.get(id=item['id'])
-            except Exception as e:
-                list_create.append(
-                    Department(
-                        id=item['id'],
-                        name=item['attributes']['name'],
-                        uid=item['attributes']['uid'],
-                        code=item['attributes']['code'],
-                        status=item['attributes']['status'],
-                        parent_id=item['attributes']['parent_id']
-                    )
+        for item in items:
+            list_create.append(
+                Department(
+                    id=item['id'],
+                    name=item['attributes']['name'],
+                    uid=item['attributes']['uid'],
+                    code=item['attributes']['code'],
+                    status=item['attributes']['status'],
+                    parent_id=item['attributes']['parent_id']
                 )
+            )
 
-        Department.objects.bulk_create(list_create)
+        Department.objects.bulk_create(list_create,
+                                       update_conflicts=True,
+                                       unique_fields=['id'],
+                                       update_fields=['name', 'uid', 'code', 'status', 'parent_id'])
 
-        logger.success('Successfully imported deparment')
-
-
+        logger.success(f'Успешно импортировано {len(list_create)} под разделений')
 
 
 class CreateBrandsAction:
 
-    def run(self):
-        list = request.get_brands()
+    @staticmethod
+    def run():
+        items = request.get_brands()
         list_create = []
 
-        for item in list:
-            
-            try:
-                Brand.objects.get(id=item['id'])
-            except Exception as e:
-                list_create.append(
-                    Brand(
-                        id=item['id'],
-                        name=item['attributes']['name'],
-                        uid=item['attributes']['uid'],
-                        code=item['attributes']['code'],
-                        status=item['attributes']['status']
-                    )
+        for item in items:
+            list_create.append(
+                Brand(
+                    id=item['id'],
+                    name=item['attributes']['name'],
+                    uid=item['attributes']['uid'],
+                    code=item['attributes']['code'],
+                    status=item['attributes']['status']
                 )
+            )
 
+        Brand.objects.bulk_create(list_create,
+                                  update_conflicts=True,
+                                  unique_fields=['id'],
+                                  update_fields=['name', 'uid', 'code', 'status'])
 
-        Brand.objects.bulk_create(list_create)
-        
-        logger.success('Successfully imported brands')
+        logger.success(f'Успешно импортировано {len(list_create)} брендов')
 
 
 class CreateStoresAction:
 
-    def run(self):
-        list = request.get_stores()
+    @staticmethod
+    def run():
+        items = request.get_stores()
         list_create = []
-        
-        for item in list:
-            try:
-                Store.objects.get(id=item['id'])
-            except Exception as e:
-                list_create.append(
-                    Store(
-                        id=item['id'],
-                        name=item['attributes']['name']
-                    )
+
+        for item in items:
+            list_create.append(
+                Store(
+                    id=item['id'],
+                    name=item['attributes']['name']
                 )
+            )
 
+        Store.objects.bulk_create(list_create,
+                                  update_conflicts=True,
+                                  unique_fields=['id'],
+                                  update_fields=['name'])
 
-        Store.objects.bulk_create(list_create)
-        
-        logger.success('Successfully imported stores')
+        logger.success(f'Успешно импортировано {len(list_create)} магазинов')
