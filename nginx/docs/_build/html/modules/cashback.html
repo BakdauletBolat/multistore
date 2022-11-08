@@ -1,0 +1,378 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Кэшбек(Стандарт) &mdash; Акции Эврики 1.0.0 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/fonts.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Купоны 🧾" href="../modules_red/coupon.html" />
+    <link rel="prev" title="Специальная цена 📈" href="spec_price.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Акции Эврики
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption" role="heading"><span class="caption-text">Черный тип акций:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="cascade.html">Каскадная цена 🖇</a></li>
+<li class="toctree-l1"><a class="reference internal" href="percent.html">Процентная акция 💯</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gift.html">Подарочная акция 🎁</a></li>
+<li class="toctree-l1"><a class="reference internal" href="spec_price.html">Специальная цена  📈</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Кэшбек(Стандарт)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Красный тип акций:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../modules_red/coupon.html">Купоны 🧾</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modules_red/chance.html">По количеству шансов ➗</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modules_red/promocode.html">Промокоды 🔡</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modules_red/check_n.html">Акция на N-ый чек 💎</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modules_red/for_client.html">Создание акции под клиента 🕺</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Поиск и фильтр акций:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../modules_find/find.html">Поиск акций 🔍</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modules_find/get.html">Получение акции по id 🔟</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modules_find/deactivate.html">Деактивация акций 🔍</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modules_find/products.html">Получение списка продуктов</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modules_find/csv2json.html">Csv в json продукты 🔍</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modules_find/to-form-sales.html">Получение списка акций специально для формы 🔢</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modules_find/download-exsel.html">Скачать спискок продуктов из акций🔢</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Списки:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../modules_list/list_active.html">Получение списка активных акции 🔢</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modules_list/list_history.html">Получение списка неактивных акции 🔢</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modules_list/tree_departments.html">Получение tree departments 🏪</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modules_list/list_shop.html">Получение магазинов 🏪</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modules_list/list_city.html">Получение городов 🏢</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modules_list/list_users.html">Получение пользователей 🏪</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modules_list/list_clients.html">Получение пользователей 🏪</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modules_list/list_qualities.html">Качествы товара 🏢</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Переменные:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../variables/type_models.html">Переменные типа моделей <strong>sale_type📖</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../variables/type_models.html#payment-method">Переменная <strong>payment_method</strong> 📖</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../variables/type_models.html#coupon-type">Переменная <strong>coupon_type</strong> 📖</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../variables/type_models.html#promocode-type">Переменная <strong>promocode_type</strong> 📖</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Акции Эврики</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+<div class="git-ribbon">
+  <a href="http://github.com/SwissDataScienceCenter" rel="me">Join us on GitHub</a>
+</div>
+
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Кэшбек(Стандарт)</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../_sources/modules/cashback.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="id1">
+<h1>Кэшбек(Стандарт)<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<p>API для создания кэшбек акции</p>
+<p><code class="xref py py-mod docutils literal notranslate"><span class="pre">Сделайте</span> <span class="pre">запрос</span> <span class="pre">методом</span> <span class="pre">POST</span> <span class="pre">по</span> <span class="pre">ссылке:</span> <span class="pre">/api/v1/sale/cashbacktype/create/</span> <span class="pre">для</span> <span class="pre">создания</span> <span class="pre">акции</span> <span class="pre">&quot;Кэшбек&quot;</span></code>
+<code class="xref py py-mod docutils literal notranslate"><span class="pre">Сделайте</span> <span class="pre">запрос</span> <span class="pre">методом</span> <span class="pre">POST</span> <span class="pre">по</span> <span class="pre">ссылке:</span> <span class="pre">/api/v1/sale/standarttype/create/</span> <span class="pre">для</span> <span class="pre">создания</span> <span class="pre">акции</span> <span class="pre">&quot;Стандарт&quot;</span></code></p>
+<p><em>Headers</em>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">-</span> <span class="n">header</span> <span class="s1">&#39;Authorization: </span><span class="si">{Token}</span><span class="s1">&#39;</span>
+<span class="o">-</span> <span class="n">header</span> <span class="s1">&#39;Content-Type: application/json&#39;</span>
+</pre></div>
+</div>
+<p><em>Тело запроса</em>:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;data&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Sale&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;attributes&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;accural_percent&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;writeoff_percent&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">80</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;activate_at&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;sale_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;cashbacktype&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;prioritet&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;products_ids&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">40</span><span class="p">],</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;start_date&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2022-07-05 11:30:00&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;end_date&quot;</span><span class="p">:</span><span class="w">  </span><span class="s2">&quot;2022-10-05 11:30:00&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;payment_method_ids&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;cities_ids&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;shops_ids&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">],</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;is_intersects_sales_ids&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;is_use_of_bonuses&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;is_manual_sale&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;is_reverse&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;is_compensated&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w"></span>
+
+<span class="w">        </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<dl class="py function">
+<dt class="sig sig-object py" id="post">
+<span class="sig-name descname"><span class="pre">post</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#post" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li><p>Обязательные поля:</p></li>
+</ul>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>type</strong> (<em>str</em>) – Тип используемой модели</p></li>
+<li><p><strong>accural_percent</strong> (<em>int</em>) – Процент начисления бонусов</p></li>
+<li><p><strong>writeoff_percent</strong> (<em>int</em>) – Процент возможного списания за раз бонусов</p></li>
+<li><p><strong>activate_at</strong> (<em>int</em>) – Количество дней через которые активируются бонусы</p></li>
+<li><p><strong>sale_type</strong> (<em>str</em>) – Поле, которое указывает тип акции</p></li>
+<li><p><strong>prioritet</strong> (<em>int</em>) – Поле, которые указывает приоритетность акции</p></li>
+<li><p><strong>products_ids</strong> (<em>int array</em>) – Поле, которое указывает список id продуктов</p></li>
+<li><p><strong>start_date</strong> (<em>datetime</em>) – Дата начала акции</p></li>
+<li><p><strong>end_date</strong> (<em>datetime</em>) – Дата конец акции</p></li>
+<li><p><strong>payment_method_ids</strong> (<em>int array</em>) – Список id разрешенных способов оплаты</p></li>
+<li><p><strong>cities_ids</strong> (<em>int array</em>) – Список id разрешенных городов</p></li>
+<li><p><strong>shops_ids</strong> (<em>int array</em>) – Список id разрешенных магазинов</p></li>
+<li><p><strong>is_intersects_sales_ids</strong> (<em>int array</em>) – Список разрешенных пересекаемых акций</p></li>
+</ul>
+</dd>
+</dl>
+<ul class="simple">
+<li><p>Необязательные поля:</p></li>
+</ul>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>is_use_of_bonuses</strong> (<em>bool</em>) – Разрешение на использование бонусов совместно с акцией</p></li>
+<li><p><strong>is_manual_sale</strong> (<em>bool</em>) – Параметр определяющий это ручная скидка</p></li>
+<li><p><strong>is_accrual_bonuses</strong> – “Boolean”, начисляется или нет</p></li>
+<li><p><strong>is_reverse</strong> (<em>bool</em>) – Параметр при котором определяется поле “products” это список разрешенных или исключенные товары</p></li>
+<li><p><strong>is_compensated</strong> (<em>bool</em>) – Параметр определяющий разрешение компенсации</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<p><em>Ответ</em>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">-</span> <span class="n">Status</span><span class="p">:</span> <span class="mi">201</span> <span class="n">Created</span>
+</pre></div>
+</div>
+<p><em>Тело ответа</em>:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;data&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Sale&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;60&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;attributes&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;start_date&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2022-07-05T11:30:00+06:00&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;end_date&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2022-10-05T11:30:00+06:00&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;payment_method&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">                </span><span class="p">{</span><span class="w"></span>
+<span class="w">                    </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"></span>
+<span class="w">                    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Наличные&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">                    </span><span class="nt">&quot;is_active&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w"></span>
+<span class="w">                </span><span class="p">}</span><span class="w"></span>
+<span class="w">            </span><span class="p">],</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;is_use_of_bonuses&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;is_manual_sale&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;is_compensated&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;prioritet&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;sale_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;cashbacktype&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;is_active&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;author_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w"></span>
+<span class="w">        </span><span class="p">},</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;relationships&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;is_intersects_sales&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">                </span><span class="nt">&quot;data&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w"></span>
+<span class="w">            </span><span class="p">},</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;content_object&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">                </span><span class="nt">&quot;data&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">                    </span><span class="nt">&quot;accural_percent&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w"></span>
+<span class="w">                    </span><span class="nt">&quot;writeoff_percent&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">80</span><span class="p">,</span><span class="w"></span>
+<span class="w">                    </span><span class="nt">&quot;activate_at&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="w"></span>
+<span class="w">                </span><span class="p">}</span><span class="w"></span>
+<span class="w">            </span><span class="p">}</span><span class="w"></span>
+<span class="w">        </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="../modules_red/coupon.html" class="btn btn-neutral float-right" title="Купоны 🧾" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="spec_price.html" class="btn btn-neutral float-left" title="Специальная цена 📈" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2022, Эврика.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
