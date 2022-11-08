@@ -8,10 +8,16 @@ from store.serializers import StoreSerializer
 
 
 class ProductPageSerializer(serializers.ModelSerializer):
+    product_id = serializers.IntegerField(required=True)
+    city_id = serializers.IntegerField(required=False,allow_null=True)
+    store_id = serializers.IntegerField(required=True)
+    lang_id = serializers.IntegerField(required=True)
+    title = serializers.CharField()
+    description = serializers.CharField()
 
     class Meta:
         model = ProductPage
-        fields = ('id', 'title', 'description', 'city', 'store', 'lang', 'product')
+        fields = ('id', 'title', 'description', 'city_id', 'store_id', 'lang_id', 'product_id')
 
 
 class GetProductPageSerializer(serializers.Serializer):

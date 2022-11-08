@@ -64,7 +64,7 @@ class BusketUseSalesView(APIView):
     """Веб контроллер для формирования акций
     """
 
-    api = SaleServiceRequest()
+
 
     @staticmethod
     def contains_and_get(items, id):
@@ -74,9 +74,10 @@ class BusketUseSalesView(APIView):
             return False, None
 
     def get(self, request, pk) -> JsonResponse | Response:
+        api = SaleServiceRequest()
         with transaction.atomic():
             data, busket = GenerateDataToFindSaleAndGetBusketTask(pk).run()
-            data_return = self.api.find_sales(data)
+            data_return = api.find_sales(data)
 
             cascades = data_return['data']['cascades']
             others = data_return['data']['others']

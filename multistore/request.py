@@ -11,7 +11,7 @@ class Request:
 
     @staticmethod
     def get_token():
-        response = requests.post('http://10.10.1.65:8090/api/services/login', data={
+        response = requests.post('https://empauth.evrika.com/api/login', data={
             'login': 'datastorage.service',
             'password': 'Zz123456'
         })
@@ -21,7 +21,6 @@ class Request:
         response = requests.get(f'{self.url}{url}', headers={
             'Authorization': 'Bearer ' + self.token
         })
-
 
         return response.json()
 
@@ -66,9 +65,6 @@ class ImsServiceRequest(Request):
     def get_prices(self, page):
         return self.get(f'/pricing/price?page={page}&per_page=1000')
 
-
-
-
     def get_products(self, page):
         return self.get(
             f'/catalog/products?page={page}&per_page=1000')
@@ -101,6 +97,7 @@ class ImsServiceRequest(Request):
 
 class StockServiceRequest(Request):
     url = os.environ.get('STOCK_IMS_URL', None)
+
     def get_stocks_for_product(self, warehouse_id, product_id, quality_id):
         try:
             return self.get(f'/stock/{warehouse_id}/{product_id}/{quality_id}')

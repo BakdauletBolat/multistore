@@ -1,8 +1,42 @@
 from multistore.request import ImsServiceRequest
-from handbook.models import Category, City, Department, WareHouse, Quality, Brand
+from handbook.models import Category, City, Department, WareHouse, Quality, Brand, Language
 from store.models import Store
 from loguru import logger
+
 request = ImsServiceRequest()
+
+
+class CreateLanguageAction:
+
+    @staticmethod
+    def run():
+        items = [{
+            'id': 1,
+            'name': 'Русский'
+        },
+            {
+                'id': 2,
+                'name': 'Английский'
+            }
+            , {
+                'id': 3,
+                'name': 'Казахский'
+            }]
+        list_create = []
+        for item in items:
+            list_create.append(
+                Language(
+                    id=item['id'],
+                    name=item['name']
+                )
+            )
+
+        Language.objects.bulk_create(list_create,
+                                      update_conflicts=True,
+                                      unique_fields=['id'],
+                                      update_fields=['name'])
+
+        logger.success(f'Успешно импортировано {len(list_create)}')
 
 
 class CreateWareHouseAction:
@@ -45,6 +79,14 @@ class CreateCitiesAction:
                     name=item['attributes']['name'],
                 )
             )
+
+        list_create.append(
+            City(
+                id=1000,
+                uid='hello',
+                name='По умолчанию'
+            )
+        )
 
         City.objects.bulk_create(list_create,
                                  update_conflicts=True,

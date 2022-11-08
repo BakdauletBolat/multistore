@@ -37,7 +37,7 @@ class Product(models.Model):
     updated_date = models.DateTimeField(auto_now=True)
 
     def __str__(self):
-        return self.base.full_name
+        return f'{self.id}: {self.base.full_name}'
 
     class Meta:
         verbose_name = 'Продукт'
@@ -56,6 +56,12 @@ class ProductPage(models.Model):
     city = models.ForeignKey('handbook.City', null=True, blank=True, on_delete=models.CASCADE)
     store = models.ForeignKey('store.Store', null=True, blank=True, on_delete=models.CASCADE)
     product = models.ForeignKey('product.Product', on_delete=models.CASCADE)
+
+    class Meta:
+        unique_together = ('lang', 'store', 'product', 'city')
+
+    def __str__(self):
+        return f'{self.id}: {self.title}'
 
 
 class Price(models.Model):

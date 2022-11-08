@@ -1,5 +1,5 @@
 from beav.models import Entity
-from product.models import Product, ProductBase, ProductImage, Price
+from product.models import Product, ProductBase, ProductImage, Price, ProductPage
 from django.contrib import admin
 
 
@@ -23,5 +23,6 @@ class ProductAdmin(admin.ModelAdmin):
 
 admin.site.register(ProductBase, ProductBaseAdmin)
 admin.site.register(Product, ProductAdmin)
+admin.site.register(ProductPage)
 admin.site.register(ProductImage)
 admin.site.register(Price)

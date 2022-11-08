@@ -95,5 +95,18 @@ class CreateProductPageView(APIView):
     def post(request):
         serializer = ProductPageSerializer(data=request.data)
         serializer.is_valid(raise_exception=True)
-        product_page = ProductPage.objects.create(**serializer.validated_data)
-        return Response(ProductPageSerializer(product_page).data, status=200)
+        defaults = {
+            'city_id': serializer.validated_data['city_id'],
+            'store_id': serializer.validated_data['store_id'],
+            'product_id': serializer.validated_data['product_id'],
+            'lang_id': serializer.validated_data['lang_id']
+        }
+        try:
+            obj = ProductPage.objects.get(**defaults)
+            for key, value in serializer.validated_data.items():
+                setattr(obj, key, value)
+            obj.save()
+        except Exception as _:
+            obj = ProductPage(**serializer.validated_data)
+            obj.save()
+        return Response(ProductPageSerializer(obj).data, status=200)

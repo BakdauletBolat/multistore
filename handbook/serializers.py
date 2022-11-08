@@ -4,9 +4,14 @@ from handbook.models import Category, City, WareHouse
 
 class CategoryBaseSerializer(serializers.ModelSerializer):
 
+    parent = serializers.SerializerMethodField('get_parent')
+    @staticmethod
+    def get_parent(obj):
+        return CategoryBaseSerializer(obj.parent).data
+
     class Meta:
         model = Category
-        fields = ('id', 'name')
+        fields = ('id', 'name', 'parent')
 
 class CategorySerializer(serializers.ModelSerializer):
     children = serializers.SerializerMethodField(method_name='get_children')
