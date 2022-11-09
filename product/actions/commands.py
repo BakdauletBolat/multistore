@@ -2,6 +2,7 @@ from multistore.request import ImsServiceRequest
 from product.models import Price, ProductBase
 from loguru import logger
 from django.db import connection
+from celery import shared_task
 
 request = ImsServiceRequest()
 

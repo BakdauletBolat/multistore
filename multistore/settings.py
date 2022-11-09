@@ -35,6 +35,7 @@ INSTALLED_APPS = [
     'busket',
     'photo',
     'django_telemetry',
+    'django_celery_results',
 
 ]
 
@@ -156,3 +157,20 @@ CORS_ALLOW_ALL_ORIGINS = True
 exception_classes = []
 
 DATABASE_ROUTERS = ['django_telemetry.routers.DatabaseForTelemetry']
+
+CELERY_RESULT_BACKEND = 'django-db'
+CELERY_BROKER_URL = 'redis://localhost:6379/0'
+
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.db.DatabaseCache',
+        'LOCATION': 'my_cache_table',
+    }
+}
+
+CELERY_CACHE_BACKEND = 'default'
+
+
+
+
+

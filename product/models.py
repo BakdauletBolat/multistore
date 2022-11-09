@@ -65,11 +65,11 @@ class ProductPage(models.Model):
 
 
 class Price(models.Model):
-    product = models.ForeignKey(ProductBase, on_delete=models.SET_NULL, null=True, blank=True,
+    product = models.ForeignKey(ProductBase, on_delete=models.CASCADE, null=True, blank=True,
                                 related_name='prices')
-    quality = models.ForeignKey(Quality, on_delete=models.SET_NULL, null=True, blank=True,
+    quality = models.ForeignKey(Quality, on_delete=models.CASCADE, null=True, blank=True,
                                 related_name='prices')
-    price_type = models.ForeignKey(PriceType, on_delete=models.SET_NULL, null=True, blank=True,
+    price_type = models.ForeignKey(PriceType, on_delete=models.CASCADE, null=True, blank=True,
                                 related_name='prices')
     cost = models.BigIntegerField()
     updated_at = models.DateTimeField(null=True, blank=True)

@@ -6,12 +6,10 @@ import json
 class Request:
     url = ''
 
-    def __init__(self):
-        self.token = self.get_token()
 
     @staticmethod
     def get_token():
-        response = requests.post('https://empauth.evrika.com/api/login', data={
+        response = requests.post('http://10.10.1.65:8090/api/services/login', data={
             'login': 'datastorage.service',
             'password': 'Zz123456'
         })
@@ -19,14 +17,14 @@ class Request:
 
     def get(self, url):
         response = requests.get(f'{self.url}{url}', headers={
-            'Authorization': 'Bearer ' + self.token
+            'Authorization': 'Bearer ' + self.get_token()
         })
 
         return response.json()
 
     def post(self, url, body):
         response = requests.post(f'{self.url}{url}', data=body, headers={
-            'Authorization': 'Bearer ' + self.token
+            'Authorization': 'Bearer ' + self.get_token()
         })
 
         return response.json()
