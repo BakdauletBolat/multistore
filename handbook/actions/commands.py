@@ -1,5 +1,6 @@
 from multistore.request import ImsServiceRequest
 from handbook.models import Category, City, Department, WareHouse, Quality, Brand, Language
+from product.models import PriceType
 from store.models import Store
 from loguru import logger
 
@@ -37,6 +38,9 @@ class CreateLanguageAction:
                                       update_fields=['name'])
 
         logger.success(f'Успешно импортировано {len(list_create)}')
+
+
+
 
 
 class CreateWareHouseAction:
@@ -119,6 +123,33 @@ class CreateQualitiesAction:
                                     update_conflicts=True,
                                     unique_fields=['id'],
                                     update_fields=['name', 'uid', 'code', 'status', 'alias', 'order'])
+
+        logger.success(f'Успешно импортировано {len(list_create)} качествы')
+
+
+
+
+class CreatePriceTypeAction:
+
+    @staticmethod
+    def run():
+        items = request.get_price_types()
+        list_create = []
+        for item in items:
+            list_create.append(
+                PriceType(
+                    id=item['id'],
+                    name=item['attributes']['name'],
+                    uid=item['attributes']['uid'],
+                    code=item['attributes']['code'],
+                    status=item['attributes']['status']
+                )
+            )
+
+        Quality.objects.bulk_create(list_create,
+                                    update_conflicts=True,
+                                    unique_fields=['id'],
+                                    update_fields=['name', 'uid', 'code', 'status'])
 
         logger.success(f'Успешно импортировано {len(list_create)} качествы')
 

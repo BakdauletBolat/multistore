@@ -63,6 +63,9 @@ class ImsServiceRequest(Request):
     def get_prices(self, page):
         return self.get(f'/pricing/price?page={page}&per_page=1000')
 
+    def get_price_types(self):
+        return self.get(f'/pricing/price/types')
+
     def get_products(self, page):
         return self.get(
             f'/catalog/products?page={page}&per_page=1000')

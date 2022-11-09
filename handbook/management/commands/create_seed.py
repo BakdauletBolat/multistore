@@ -1,6 +1,7 @@
 from django.core.management.base import BaseCommand
 from handbook.actions.commands import CreateBrandsAction, CreateCategoriesAction, CreateCitiesAction, \
-    CreateDeparmentsAction, CreateQualitiesAction, CreateStoresAction, CreateWareHouseAction, CreateLanguageAction
+    CreateDeparmentsAction, CreateQualitiesAction, CreateStoresAction, CreateWareHouseAction, CreateLanguageAction, \
+    CreatePriceTypeAction
 
 from order.actions.commands import CreateDeliveryMethodAction, CreateOrderStatusAction, CreatePaymentMethodAction
 from product.actions.commands import CreateProductsAction, CreatePricesAction
@@ -13,6 +14,8 @@ class Command(BaseCommand):
 
     def handle(self, *args, **options):
         CreateLanguageAction().run()
+        # CreatePrice
+        CreatePriceTypeAction().run()
         CreateUserAction().run()
         CreateStoresAction().run()
         CreateCategoriesAction().run()
