@@ -146,7 +146,7 @@ class CreatePriceTypeAction:
                 )
             )
 
-        Quality.objects.bulk_create(list_create,
+        PriceType.objects.bulk_create(list_create,
                                     update_conflicts=True,
                                     unique_fields=['id'],
                                     update_fields=['name', 'uid', 'code', 'status'])
